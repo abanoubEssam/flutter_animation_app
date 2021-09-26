@@ -21,18 +21,26 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     catAnimation = Tween(begin: 0.0, end: 100.0).animate(
       CurvedAnimation(parent: catAnimationController, curve: Curves.easeIn),
     );
+  }
 
-    catAnimationController.forward();
+  onTap() {
+    if (catAnimationController.status == AnimationStatus.completed) {
+      catAnimationController.reverse(from: 100.0);
+    } else if (catAnimationController.status == AnimationStatus.dismissed) {
+      catAnimationController.forward();
+    }
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Animation'),
-      ),
-      body: buildAniation(),
-    );
+        appBar: AppBar(
+          title: const Text('Animation'),
+        ),
+        body: GestureDetector(
+          child: buildAniation(),
+          onTap: onTap,
+        ));
   }
 
   Widget buildAniation() {
