@@ -9,7 +9,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
-  late Animation<int> catAnimation;
+  late Animation<double> catAnimation;
   late AnimationController catAnimationController;
 
   @override
@@ -18,7 +18,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     catAnimationController =
         AnimationController(vsync: this, duration: const Duration(seconds: 2));
 
-    catAnimation = Tween(begin: 0, end: 100).animate(
+    catAnimation = Tween(begin: 0.0, end: 100.0).animate(
       CurvedAnimation(parent: catAnimationController, curve: Curves.easeIn),
     );
 
