@@ -38,12 +38,19 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           title: const Text('Animation'),
         ),
         body: GestureDetector(
-          child: buildAniation(),
+          child: Center(
+            child: Stack(
+              children: <Widget>[
+                buildCatAnimation(),
+                buildBox(),
+              ],
+            ),
+          ),
           onTap: onTap,
         ));
   }
 
-  Widget buildAniation() {
+  Widget buildCatAnimation() {
     return AnimatedBuilder(
       animation: catAnimation,
       builder: (context, child) {
@@ -53,6 +60,14 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         );
       },
       child: const Cat(),
+    );
+  }
+
+  Widget buildBox() {
+    return Container(
+      height: 200,
+      width: 200,
+      color: Colors.brown,
     );
   }
 }
